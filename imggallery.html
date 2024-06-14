@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 갤러리</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+    .img-content{
+      width: 1100px;
+      margin:0 auto;
+    }
+
+    .img-content h2{
+      text-align:center;
+      padding: 10px 0;
+    }
+
+    .img-content ul{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .img-content > ul > li{
+      width: 300px;
+      height: 300px;
+      border:1px solid;
+    }
+
+    ul > li > img{
+      width: 100%;
+      height: 100%;
+    }
+
+    .gallery{
+      width: 100vw;
+      height: 100vh;
+      background:rgba(0,0,0,0.4);
+      position: absolute;
+      left:0;
+      top:0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gallery img{
+      width:  400px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrap">
+    <div class="img-content">
+      <h2>이미지 갤러리</h2>
+      <ul>
+        <li><img src="img/img1.jpg" alt="이미지1"></li>
+        <li><img src="img/img2.jpg" alt="이미지1"></li>
+        <li><img src="img/img3.jpg" alt="이미지1"></li>
+      </ul>
+    </div>
+  </div>
+  <div class="gallery">
+    <img src="" alt="이미지">
+  </div>
+  <script>
+    const img = document.querySelectorAll("ul > li");
+    const imgArray = Array.from(img);
+    
+    const gallery = document.querySelector('.gallery');
+    const viewImg = document.querySelector('.gallery>img');
+
+    // li 배열로 만들기
+    for(i of imgArray){
+        i.onclick = function(e){
+        console.log(e.target.src)
+        gallery.style.display = "flex";
+        viewImg.src = e.target.src;
+      }
+    }
+
+    // 닫기
+    gallery.onclick = function(){
+      this.style.display = "none";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  const totalArray = [];
+  const candyArray = [];
+  const student = 10;
+  while(student !== totalArray.length){
+    const score = parseInt(prompt("학생들의 점수를 입력하세요"));
+    if(isNaN(score)){
+      alert("숫자를 입력해줘");
+      continue;
+    }
+    totalArray.push(score);
+
+  }
+
+  totalArray.sort(function(a,b){return a-b});
+  
+  for(let i = 0; i < totalArray.length; i++){
+    if(totalArray[0] == totalArray[i]){
+      candyArray.push(totalArray[i]);
+    } else if((totalArray[1] != totalArray[i])){
+      candyArray.push(totalArray[i]);
+    } else if((totalArray[2] <= totalArray[i]))
+  }
+
+  console.log(totalArray);
+  
+  console.log(candyArray)
+</script>
+</html>

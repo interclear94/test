@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0; padding:0;
+    }
+
+    ul, li{
+      list-style: none;
+    }
+
+    div{
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    ul{
+      width: 800px;
+      height: 200px;
+      display: flex;
+      /* transition: all 1s; */
+    }
+
+    li{
+      width: 200px;
+      height: 200px;
+    }
+
+    li img{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul>
+      <li><img src="img/img1.jpg" alt="1"></li>
+      <li><img src="img/img2.jpg" alt="1"></li>
+      <li><img src="img/img3.jpg" alt="1"></li>
+      <li><img src="img/img4.jpg" alt="1"></li>
+    </ul>
+  </div>
+  <button class="prev">이전</button>
+  <button class="next">다음</button>
+</body>
+<script>
+  const prev = document.querySelector(".prev");
+  const next = document.querySelector(".next");
+
+  const _ul = document.querySelector("ul");
+  let index = 0;
+
+  next.onclick = function(){
+    ++index;
+    if(index == 4){
+      index = 0;
+    }
+    _ul.style.transform = `translateX(${-200 * index}px)`;
+  }
+
+  
+    
+  const auto = setInterval(function(){
+    ++index;
+    if(index == 4){
+      index = 0;
+    }
+    _ul.style.transform = `translateX(${-200 * index}px)`;
+  },2000)
+
+  next.addEventListener("mouseover", function(){
+    clearInterval(auto);
+  })
+  next.addEventListener("mouseout", function(){
+    setInterval(function(){
+    ++index;
+    if(index == 4){
+      index = 0;
+    }
+    _ul.style.transform = `translateX(${-200 * index}px)`;
+  },2000)
+  })
+
+  prev.addEventListener("mouseover", function(){
+    clearInterval(auto);
+  })
+  prev.addEventListener("mouseout", function(){
+    setInterval(function(){
+    ++index;
+    if(index == 4){
+      index = 0;
+    }
+    _ul.style.transform = `translateX(${-200 * index}px)`;
+  },2000)
+  })
+
+  prev.onclick = function(){
+    --index;
+    if(index == -1){
+      index = 3;
+    }
+    _ul.style.transform = `translateX(${-200 * index}px)`;
+  }
+
+</script>
+</html>
